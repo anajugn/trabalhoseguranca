@@ -1,0 +1,357 @@
+\documentclass[12pt,oneside,a4paper,article]{abntex2}
+\usepackage[utf8]{inputenc} % Codificação do documento
+\usepackage[T1]{fontenc}    % Seleção de código de fonte.
+\usepackage[brazil]{babel}  % Idioma do documento
+\usepackage{graphicx}       % Inclusão de gráficos
+\usepackage{tabularx}       % Tabelas avançadas
+\usepackage{amsmath}        % Melhorias em matemática
+\usepackage{lipsum}         % Geração de texto dummy
+\usepackage{authblk}
+\usepackage{indentfirst}
+% Configurações específicas do abntex2
+% Aqui você pode adicionar configurações específicas, como redefinições de comandos
+% ou adições de novos pacotes que são essenciais para o seu documento.
+\usepackage[rightcapition]{sidecap}
+\graphicspath{{images/}}
+% Carrega o pacote abntex2cite para citações
+\usepackage[alf]{abntex2cite} % ou use [num] para citações numéricas
+
+\usepackage[left=3cm,right=2cm,top=3cm,bottom=2cm]{geometry} % Margens
+\usepackage{setspace}       % Espaçamento entre linhas
+% %\usepackage{natbib}         % Formatação de bibliografia
+
+% Informações de título
+\title{\textbf{Análise de riscos em sistemas de informação}}
+\author{Iago César Lacerda Santos \thanks{iagocesarlacerda.santos@ucsal.edu.br}}
+\author{Ana Julia Gusmão do Nascimento \thanks{anajulia.nascimento@ucsal.edu.br}}
+\author{Calebe Alexandre dos Santos Alves  \thanks{calebe.alves@ucsal.edu.br}}
+\author{Pedro Luís Ramos de Oliveira \thanks{pedroluis.oliveira@ucsal.edu.br}}
+\author{⁠William Paixão Dos Santos \thanks{⁠williampaixao.santos@ucsal.edu.br} }
+\author{Leonardo Martins Almeida \thanks{⁠leonardomartins.almeida@ucsal.edu.br} }
+\author{Elton Figueredo da Silva \thanks{elton.figueiredo@pro.ucsal.br}}
+
+\affil{
+  Bacharelado em Engenharia de Software \par
+  Escola de Tecnologias \par
+Universidade Católica do Salvador (UCSAL) \par
+Av. Prof. Pinto de Aguiar, 2589 Pituaçu, CEP: 41740-090 \par
+Salvador/BA, Brasil
+}
+\affil{\textit {\{iagocesarlacerda.santos, anajulia.nascimento, calebe.alves , pedroluis.oliveira⁠, williampaixao.santos, leonardomartins.almeida\}@ucsal.edu.br}}
+\affil{\textit {\{elton.figueiredo\}@pro.ucsal.edu.br}}
+
+
+
+
+
+\date{18 de outubro 2024}
+
+
+
+\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+\renewcommand{\maketitlehookb}{}
+}{}
+
+% Configurações de aparência do PDF final
+% \usepackage{hyperref} % para inserir links
+ \hypersetup{
+      colorlinks=false,       % false: boxed links; true: colored links
+      pdfborder={0 0 0},      % remove as bordas ao redor dos links
+ }
+
+\renewcommand*{\Authsep}{, }
+\renewcommand*{\Authand}{, }
+\renewcommand*{\Authands}{, }
+\renewcommand*{\Affilfont}{\normalsize\normalfont}
+\renewcommand*{\Authfont}{\bfseries}    % make author names boldface    
+\setlength{\affilsep}{2em}   % set the space between author and affiliation
+
+\newsavebox\affbox
+
+
+
+
+
+\begin{document}
+
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{images/ucsal_logo.png} 
+\end{center}
+
+{\let\newpage\relax\maketitle}
+
+\pagebreak
+\begin{resumoumacoluna}
+ \textbf{ A análise de riscos de sistemas de informação é essencial para assegurar a segurança e integridade do sistema, abordando a identificação e prevenção de possíveis ameaças, sejam humanas, regulatórias e físicas. O artigo, liderado pela ScrumMaster Ana Júlia Gusmão do Nascimento, examina e discorre sobre metodologias como NIST e ISO27005, além de estratégias de mitigação, uso de ferramentas e procedimentos que realizam o controle da gestão de riscos, em um processo de monitoramento e resposta aos riscos presentes no sistema.
+ Nesse artigo, são analisados casos de sucessos e falhas em segurança, assim como regulamentações no sistema, como GDPR e LGPD. O estudo destaca a necessidade de adaptação à medida que novas tecnologias e ameaças emergentes, como as IA's (Inteligências Artificiais) e Iot's (Internet das Coisas), nesse cenário de constante evolução tecnológica. }
+ \vspace{\onelineskip}
+ 
+ \noindent
+ \textbf{Palavras-chaves}: Análise de riscos, segurança, regulamentações.
+\end{resumoumacoluna}
+
+\textual
+\section {\textbf{Introdução à Análise de Riscos.}}
+\subsection{Definição de Riscos em Sistemas de Informação}
+{Os riscos em sistemas de informação se referem a possíveis eventos que possam afetar de forma negativa as operações, objetivos e organização de um software. Esses riscos podem ser derivados de vulnerabilidades tanto de software quanto de hardware, assim como erros humanos, como estimativas incorretas e ausência de possíveis precauções.}
+
+\subsection {Importância da Análise de Riscos}
+{O processo de análise de riscos é de extrema importância, pois, a partir da análise, permite identificar, avaliar e prevenir possíveis riscos futuros. Além disso, ao realizar essa prevenção, evitam-se financeiros, estipulação de prazo indevido, falhas de segurança do sistema e outros possíveis riscos.}
+
+\newpage
+% Riscos Técnicos (Falhas de Hardware e Software)
+
+\setcounter{section}{0}
+\section{Riscos Técnicos (Falhas de Hardware e Software)}
+
+Avaliando sistemas do mundo real, é notória a necessidade de garantir a integridade de sistemas em níveis que não se referem apenas à interface de usuário. Falhas em hardware e software referem-se a potenciais problemas que comprometem diretamente o funcionamento em qualquer nível de um determinado produto, já que interrompem serviços, bancos de dados e qualquer outra aplicação sensível.
+
+\subsection{Falhas de Hardware}
+
+Problemas físicos são mais recorrentes do que se imagina. A necessidade de manutenção e delegação de responsabilidades sobre esses sistemas precisam ser cuidadosamente definidas. Dentre as principais falhas que valem a pena ser compreendidas:
+
+\begin{enumerate}
+    \item \textbf{Quebra de discos rígidos}: Pode resultar em perdas de dados críticos. Estudos da PIVIT Global indicam que as falhas em discos rígidos aumentam com o tempo, atingindo até 18\% após 7 anos \cite{pivitglobal}. Backups regulares e monitoramento preventivo podem ser relevantes para evitar essas vulnerabilidades na integridade de componentes de armazenamento.
+    
+    \item \textbf{Problemas de conectividade em rede}: Falhas em roteadores ou switches podem levar à perda de comunicação entre sistemas, impactando operações dependentes de rede. Implementar arquitetura e sistemas de rede mais robustos, bem como monitoramento em tempo real, pode ser essencial para manter a integridade e conectividade da rede.
+    
+    \item \textbf{Problemas físicos relativos à restrição de acesso, climatização e gestão de recursos}: A parte física de um sistema possui, a partir de compreensões e estudos científicos, algumas práticas a serem seguidas para manter sua longevidade. Características como umidade, temperatura e gestão de recursos e acesso são essenciais para manter a integridade desses recursos. Normas como a ASHRAE (American Society of Heating, Refrigerating and Air-Conditioning Engineers) e a TIA-942 (Telecommunications Infrastructure Standard for Data Centers) fornecem diretrizes e recomendações de manutenção de sistemas. Controle de acesso físico, manutenções preventivas e a climatização adequada podem ser fundamentais para evitar riscos à integridade material do sistema.
+\end{enumerate}
+
+\subsection{Falhas de Software}
+
+As falhas de software são problemas relacionados ao código ou à configuração de aplicações que podem comprometer seu funcionamento. Exemplos incluem:
+
+\begin{enumerate}
+    \item \textbf{Bugs ou erros de programação}: Podem causar comportamentos inesperados, como crashes ou corrupção de dados. Problemas como esse podem ser críticos, especialmente em tempo de execução do sistema. A implementação de processos de teste, revisão de código e criação de ambientes de teste para simular alterações aplicadas à integridade pode ser fundamental para evitar problemas com bugs e outras falhas humanas.
+    
+    \item \textbf{Vulnerabilidades de segurança}: Falhas que permitem ataques cibernéticos, como injeção de SQL ou cross-site scripting, comprometendo a integridade e confidencialidade dos dados. Vulnerabilidades de segurança interferem diretamente na reputação de uma empresa, especialmente no que se refere à LGPD, que pode definir a confiabilidade de um sistema em relação aos dados de seus usuários. Para fortalecer a segurança de um sistema, é essencial adotar uma abordagem de desenvolvimento seguro, incluindo práticas como análise de ameaças, testes de penetração e solução de segurança em camadas.
+    
+    \item \textbf{Problemas de compatibilidade}: Atualizações de software que não são compatíveis com outros sistemas podem causar interrupções no serviço. Portanto, ações precisam ser cuidadosamente estudadas e simuladas, especialmente em ambientes em que a interrupção de serviços pode ser prejudicial.
+\end{enumerate}
+
+
+% Riscos Humanos em Sistemas da Informação: Erros e Fraudes
+
+\newpage
+
+\setcounter{section}{0}
+\section{Riscos Humanos em Sistemas da Informação: Erros e Fraudes}
+
+Os riscos humanos estão entre os mais difíceis de mitigar, uma vez que envolvem o comportamento humano, tanto intencional quanto não intencional. Eles podem surgir de falhas operacionais, pouco ou nenhum treinamento por parte dos envolvidos, além de ações maliciosas como fraudes. Os tópicos abaixo abordam mais detalhes sobre esse tema, casos reais de vulnerabilidade e as estratégias de mitigação.
+
+\subsection{Erros Humanos}
+
+Os erros humanos são falhas não intencionais cometidas por colaboradores e usuários que podem levar à exposição de dados, perda de informações ou interrupções operacionais. Tais erros podem ocorrer, na grande parte dos casos, por causa de falta de treinamento, práticas inadequadas ou falhas de comunicação. A seguir, estão alguns exemplos comuns:
+
+\begin{enumerate}
+    \item \textbf{Configuração incorreta de sistemas}: Configurar sistemas sem seguir as práticas recomendadas pode abrir brechas de segurança e aumentar a vulnerabilidade a ataques. Em 2019, um erro de configuração no firewall permitiu que hackers invadissem a rede da \textbf{Capital One}, comprometendo dados de mais de 100 milhões de clientes.
+
+    \item \textbf{Envio de informações para destinatários errados}: Enviar e-mails contendo informações sensíveis para destinatários incorretos é um dos incidentes mais comuns de violação de dados, especialmente em setores como o financeiro e o de saúde.
+
+    \item \textbf{Exclusão acidental de dados}: A exclusão inadvertida de informações críticas sem backup adequado pode causar perda irreversível de dados e impactar a continuidade do negócio.
+\end{enumerate}
+
+\subsubsection{Mitigação de Erros Humanos}
+
+\begin{enumerate}
+    \item \textbf{Treinamento e Capacitação Contínua}: Proporcionar treinamentos regulares para colaboradores, cobrindo boas práticas de segurança, conscientização sobre phishing, configuração de sistemas e políticas internas.
+
+    \item \textbf{Implementação de Revisões de Configuração}: Instituir revisões obrigatórias por pares para alterações críticas em sistemas e realizar auditorias periódicas para garantir que as configurações estejam de acordo com as políticas de segurança.
+
+    \item \textbf{Automatização de Processos}: Automatizar processos repetitivos e suscetíveis a erro, como backup de dados e envio de e-mails, para reduzir a dependência de intervenção humana.
+
+    \item \textbf{Controle de Acessos Granular}: Utilizar políticas de controle de acesso baseadas em função (RBAC - Role-Based Access Control) para garantir que cada usuário tenha acesso apenas às informações necessárias para suas funções.
+\end{enumerate}
+
+\subsection{Fraudes Internas e Externas}
+
+As fraudes humanas são ações intencionais para manipular, roubar ou destruir informações e recursos valiosos para a organização. Elas podem ser executadas por colaboradores internos ou por agentes externos e estão frequentemente associadas a ganhos financeiros ou danos à reputação. A seguir, alguns exemplos reais de fraudes (uma interna e outra externa) e estratégias de mitigação:
+
+\begin{enumerate}
+    \item \textbf{Fraude Interna}: Executada por funcionários ou parceiros que possuem conhecimento dos processos e acesso aos sistemas. Exemplos incluem a manipulação de registros financeiros, desvio de fundos ou apropriação de propriedade intelectual. \textbf{Exemplo real}: Em 2021, um funcionário da empresa americana \textbf{National Fuel} foi acusado de desviar mais de US\$ 1 milhão ao manipular registros de vendas e comissões \cite{nationalfuel}.
+    
+    \item \textbf{Fraude Externa}: Envolve agentes fora da organização que utilizam técnicas como engenharia social, phishing e spear-phishing para obter acesso a informações confidenciais. \textbf{Exemplo real}: A empresa \textbf{Ubiquiti Networks} sofreu um ataque de engenharia social em 2015, resultando na perda de mais de US\$ 39 milhões por meio de fraudes de e-mail empresarial (BEC - Business Email Compromise) \cite{ubiquiti}.
+\end{enumerate}
+
+\subsubsection{Mitigação de Fraudes}
+
+\begin{enumerate}
+    \item \textbf{Implementação de Controles Internos Rigorosos}: Definir processos de controle de acesso baseados no princípio do menor privilégio, segregação de funções e auditorias regulares de registros.
+    
+    \item \textbf{Política de Monitoramento de Funcionários}: Monitorar atividades anômalas em sistemas internos para detectar tentativas de fraude. Utilizar ferramentas de análise de comportamento (UEBA - User and Entity Behavior Analytics).
+    
+    \item \textbf{Autenticação Multifator (MFA)}: Implementar autenticação multifator para acessar sistemas críticos, evitando que credenciais roubadas sejam usadas para fraudes.
+    
+    \item \textbf{Programa de Conformidade e Ética}: Estabelecer um programa formal de ética e conformidade, incluindo treinamento sobre políticas de uso aceitável e canais de denúncia para identificar atividades suspeitas.
+\end{enumerate}
+
+\subsection{Ameaças de Engenharia Social}
+
+Conhecida mais popularmente como enganação ou manipulação, a engenharia social é uma prática que visa levar pessoas a acreditar numa falsa verdade com o intuito de divulgar informações confidenciais ou realizar ações que possam comprometer a si mesmas ou à organização. Os tipos mais comuns incluem:
+
+\begin{enumerate}
+    \item \textbf{Phishing}: E-mails fraudulentos que imitam comunicações legítimas para enganar usuários a fornecer informações como senhas ou dados bancários.
+
+    \item \textbf{Vishing e Smishing}: Utilizam chamadas de voz e mensagens de texto, respectivamente, para enganar os alvos e coletar informações.
+\end{enumerate}
+
+\subsubsection{Mitigação de Ameaças de Engenharia Social}
+
+\begin{enumerate}
+    \item \textbf{Treinamento de Conscientização}: Realizar treinamentos frequentes sobre como identificar e reportar e-mails de phishing e outras formas de engenharia social.
+
+    \item \textbf{Simulação de Phishing}: Conduzir campanhas simuladas de phishing para medir a prontidão dos colaboradores e ajustar as estratégias de mitigação conforme necessário.
+
+    \item \textbf{Política de Verificação de Identidade}: Implementar políticas que exijam verificação adicional de identidade antes de compartilhar informações confidenciais, especialmente para solicitações feitas por e-mail ou telefone.
+\end{enumerate}
+
+\newpage
+
+\setcounter{section}{0}
+\section{Riscos Legais e Regulatórios em Sistemas de Informação}
+
+Os \textbf{riscos legais e regulatórios} em sistemas de informação estão relacionados à conformidade com leis e normas que regem a proteção e o uso de dados. Organizações que falham em cumprir essas exigências podem enfrentar penalidades financeiras severas, perda de reputação e até processos judiciais.
+
+\subsection{Exemplos de Riscos Legais e Regulatórios}
+
+\begin{enumerate}
+    \item \textbf{Não conformidade com regulamentações de privacidade}:
+    Leis como o \textbf{GDPR} (General Data Protection Regulation) na União Europeia e a \textbf{LGPD} (Lei Geral de Proteção de Dados) no Brasil impõem rígidos requisitos sobre como as empresas coletam, armazenam e processam dados pessoais. Violações dessas regulamentações podem resultar em multas expressivas. Por exemplo, o \textbf{Google} foi multado em €50 milhões por violar o GDPR em 2019 \cite{googlefine}.
+    
+    \item \textbf{Licenciamento de software}:
+    O uso indevido de software sem licenças apropriadas ou o descumprimento de contratos de licenciamento pode expor a empresa a ações judiciais e indenizações. Empresas frequentemente enfrentam auditorias de software para garantir que estão em conformidade com os termos de uso.
+    
+    \item \textbf{Compliance setorial}:
+    Alguns setores, como o financeiro e o de saúde, possuem regulamentações específicas que exigem o cumprimento de padrões elevados de segurança. Por exemplo, o \textbf{PCI DSS} (Payment Card Industry Data Security Standard) exige que todas as empresas que processam dados de cartões de crédito mantenham controles rígidos sobre o acesso a esses dados. A não conformidade pode levar a multas e até a perda do direito de processar transações financeiras.
+\end{enumerate}
+
+\subsection{Mitigação de Riscos Legais e Regulatórios}
+
+\begin{enumerate}
+    \item \textbf{Auditorias regulares}: Realizar auditorias para garantir que a organização está em conformidade com todas as regulamentações aplicáveis.
+    
+    \item \textbf{Treinamento e Conscientização}: Capacitar funcionários sobre as obrigações legais e regulatórias, especialmente em relação à proteção de dados e práticas de compliance.
+    
+    \item \textbf{Monitoramento de Mudanças Legais}: Manter-se atualizado com mudanças nas leis e normas que afetam o setor para ajustar políticas internas conforme necessário.
+\end{enumerate}
+
+
+% Metodologias de Análise de Riscos em Sitemas de Informação
+
+\newpage
+
+\setcounter{section}{0}
+\section{Metodologias de Análise de Riscos em Sistemas de Informação}
+
+A criação de métodos para mapear riscos é imprescindível, considerando possíveis vulnerabilidades do mundo real. Estratégias de identificação e avaliação de ameaças e suas respectivas tratativas fortalecem a operação e a segurança de qualquer instituição. Abaixo são exploradas as principais metodologias de análise de riscos, com foco na identificação, avaliação e métodos comuns e eficazes utilizados.
+
+\subsection{Identificação de Riscos}
+
+A \textbf{identificação de riscos} é a primeira etapa da análise, onde as potenciais ameaças são mapeadas para que possam ser avaliadas e tratadas posteriormente. Existem várias técnicas para identificar riscos, entre elas:
+
+\begin{enumerate}
+    \item \textbf{Brainstorming}: Grupos de especialistas se reúnem para discutir potenciais ameaças em um ambiente aberto, promovendo a geração de ideias criativas sobre possíveis riscos. A principal vantagem do brainstorming é a colaboração entre diferentes departamentos, o que pode trazer à tona ameaças que não haviam sido consideradas antes.
+    
+    \item \textbf{Entrevistas}: Envolve a coleta de insights de colaboradores ou stakeholders que possuem conhecimento sobre áreas críticas da organização. As entrevistas podem ser estruturadas ou semiestruturadas e são eficazes para capturar informações de especialistas internos e externos.
+    
+    \item \textbf{Checklists}: Baseados em riscos conhecidos ou em conformidade com normas específicas, os checklists ajudam a garantir que nenhuma área seja negligenciada durante a identificação.
+\end{enumerate}
+
+\subsection{Avaliação de Riscos}
+
+A \textbf{avaliação de riscos} envolve analisar e classificar os riscos identificados, considerando a probabilidade de sua ocorrência e o impacto que podem causar. Isso é geralmente feito por meio de duas abordagens principais:
+
+\begin{enumerate}
+    \item \textbf{Análise Qualitativa}: Envolve a avaliação subjetiva dos riscos com base em sua gravidade e probabilidade de ocorrência. Riscos são classificados em categorias como baixo, médio ou alto impacto. A análise qualitativa é amplamente usada quando dados quantitativos precisos não estão disponíveis, ou como uma primeira fase de avaliação.
+    
+    \item \textbf{Análise Quantitativa}: Foca na mensuração numérica do risco, como a estimativa de perdas financeiras associadas a um evento de risco. Ferramentas como \textit{cálculo de Valor Esperado de Perda (ALE - Annualized Loss Expectancy)} são comuns em análises quantitativas, proporcionando uma visão mais detalhada dos potenciais danos financeiros.
+\end{enumerate}
+
+\setcounter{section}{0}
+\section{Diretrizes Comuns de Análise de Riscos}
+
+As diretrizes para análise de riscos - guias, normas ISO e outros frameworks - são amplamente usadas para organizar a forma como as análises de risco são realizadas. Algumas dessas diretrizes estão listadas abaixo, com detalhes adicionais sobre suas aplicações e benefícios:
+
+\subsection{ISO/IEC 27005}
+
+Faz parte do framework ISO 27000 e é totalmente focada na \textbf{gestão de riscos de segurança da informação}. Ela é um complemento natural à \textbf{ISO/IEC 27001}, que estabelece um Sistema de Gestão de Segurança da Informação (SGSI), e oferece diretrizes mais detalhadas sobre como executar a identificação e mitigação de riscos.
+
+\begin{itemize}
+    \item \textbf{Etapas principais da ISO/IEC 27005}:
+    \begin{enumerate}
+        \item \textbf{Identificação de ativos e riscos}: Envolver todos os ativos de informação e os riscos associados.
+        \item \textbf{Avaliação de impacto e probabilidade}: Estimar a probabilidade de um risco se materializar e o impacto que ele causaria.
+        \item \textbf{Tratamento de riscos}: Determinar as ações corretivas necessárias para mitigar, aceitar, transferir ou evitar riscos.
+    \end{enumerate}
+    \textbf{Aplicação}: Organizações de todos os tamanhos e setores que buscam alinhar-se às melhores práticas globais de segurança da informação.
+\end{itemize}
+
+\subsection{OCTAVE (Operationally Critical Threat, Asset, and Vulnerability Evaluation)}
+
+O \textbf{OCTAVE} é uma metodologia de avaliação de riscos desenvolvida pelo CERT da \textbf{Carnegie Mellon University}, com foco em ameaças cibernéticas e vulnerabilidades organizacionais. Ele é particularmente eficaz em grandes organizações com ativos críticos.
+
+\begin{itemize}
+    \item \textbf{Componentes principais do OCTAVE}:
+    \begin{enumerate}
+        \item \textbf{Identificação de Ativos Críticos}: Foco nos ativos mais valiosos da organização.
+        \item \textbf{Avaliação de Vulnerabilidades}: Identificação de fraquezas em sistemas e processos que podem ser exploradas.
+        \item \textbf{Priorização de Riscos}: Com base na criticidade dos ativos e no impacto potencial de ameaças.
+    \end{enumerate}
+    \textbf{Aplicação}: Utilizado principalmente em setores como defesa, governo e grandes empresas multinacionais com infraestrutura crítica de TI.
+\end{itemize}
+
+\subsection{FAIR (Factor Analysis of Information Risk)}
+
+O \textbf{FAIR} é uma abordagem quantitativa para a análise de riscos cibernéticos, focando na mensuração precisa dos riscos. Ao contrário de muitos outros métodos qualitativos, o FAIR quantifica os riscos em termos financeiros, facilitando o entendimento do impacto dos riscos na empresa.
+
+\begin{itemize}
+    \item \textbf{Etapas principais do FAIR}:
+    \begin{enumerate}
+        \item \textbf{Identificação de Cenários de Risco}: Criar cenários de risco detalhados com base em ameaças específicas.
+        \item \textbf{Avaliação Quantitativa de Perda}: Usar métricas como \textit{Valor Esperado de Perda (ALE)} para quantificar o impacto financeiro de um risco.
+        \item \textbf{Análise de Frequência e Magnitude}: Estimar a frequência esperada de um risco e a magnitude de suas consequências.
+    \end{enumerate}
+    \textbf{Aplicação}: Usado por grandes corporações e instituições financeiras que precisam quantificar riscos para apoiar decisões de gestão e compliance.
+\end{itemize}
+
+\subsection{CRAMM (CCTA Risk Analysis and Management Method)}
+
+Desenvolvido originalmente pelo governo do Reino Unido, o \textbf{CRAMM} é um método de análise e gestão de riscos de TI que combina avaliação qualitativa e quantitativa. Ele se concentra em uma análise profunda dos ativos e na identificação de contramedidas eficazes para mitigar riscos.
+
+\begin{itemize}
+    \item \textbf{Etapas principais do CRAMM}:
+    \begin{enumerate}
+        \item \textbf{Identificação de Ativos e Dependências}: Mapear todos os ativos críticos e suas interdependências.
+        \item \textbf{Análise de Vulnerabilidades}: Avaliar as vulnerabilidades específicas de cada ativo e o impacto associado a uma falha ou ataque.
+        \item \textbf{Sugestão de Contramedidas}: Propor contramedidas específicas com base na análise de custo-benefício.
+    \end{enumerate}
+    \textbf{Aplicação}: Muito utilizado por governos e empresas com uma infraestrutura de TI altamente complexa e distribuída.
+\end{itemize}
+
+
+\newpage
+
+\section*{Bibliografia}
+    
+% 1
+\begin{thebibliography}{9}
+    \bibitem{pivitglobal} PIVIT Global, 5 Common Causes of Hardware Failure and How to Prevent Them. Disponível em: \url{https://info.pivitglobal.com/blog/causes-of-hardware-failure}. Acesso em: 20 de outubro de 2024.
+    
+    % 2
+    \bibitem{nationalfuel} Insurance News Net, National Fuel Alleges Ex-Employee Led Purchasing Scheme That Defrauded Company Of At Least \$1 Million. Disponível em: \url{https://insurancenewsnet.com/oarticle/national-fuel-alleges-ex-employee-led-purchasing-scheme-that-defrauded-company-of-at-least-1-million}. Acesso em: 20 de outubro de 2024.
+    
+    \bibitem{ubiquiti} Ubiquiti Networks, Business Email Compromise: Lessons Learned. Disponível em: \url{https://www.ubnt.com/bec/}. Acesso em: 20 de outubro de 2024.
+    
+    % 3
+    \bibitem{googlefine} France24, \textit{Google fined 50 million euros by French data watchdog over GDPR breaches}. Disponível em: \url{https://www.france24.com/en/20190121-google-fined-50-million-euros-france-gdpr-data-privacy}. Acesso em: 20 de outubro de 2024.
+    
+    % 4
+    \bibitem{iso27005} International Organization for Standardization. \textit{ISO/IEC 27005:2018 - Information security risk management}. Disponível em: \url{https://www.iso.org/standard/75281.html}. Acesso em: 21 de outubro de 2024.
+        \bibitem{octave} Carnegie Mellon University. \textit{OCTAVE: Operationally Critical Threat, Asset, and Vulnerability Evaluation}. Disponível em: \url{https://www.cert.org/octave/}. Acesso em: 21 de outubro de 2024.
+        \bibitem{fair} RiskLens. \textit{Factor Analysis of Information Risk (FAIR)}. Disponível em: \url{https://www.risklens.com/fair}. Acesso em: 21 de outubro de 2024.
+        \bibitem{cramm} UK Government. \textit{CRAMM: CCTA Risk Analysis and Management Method}. Disponível em: \url{https://www.cramm.com/}. Acesso em: 21 de outubro de 2024.
+    
+    \end{thebibliography}
+    
+\end{document}
